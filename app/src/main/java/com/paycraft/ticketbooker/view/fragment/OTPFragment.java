@@ -26,6 +26,8 @@ import com.paycraft.ticketbooker.models.VerifyOTP;
 import com.paycraft.ticketbooker.services.APIService;
 import com.paycraft.ticketbooker.utils.Utility;
 
+import java.util.Objects;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
@@ -37,12 +39,12 @@ public class OTPFragment extends Fragment {
 
     private static final String CHANNEL_ID = "234561";
     private APIService apiService;
-    private Retrofit mRetrofit = TicketApp.getRetrofitInstance();
-    private CompositeDisposable compositeDisposable = new CompositeDisposable();
+    private final Retrofit mRetrofit = TicketApp.getRetrofitInstance();
+    private final CompositeDisposable compositeDisposable = new CompositeDisposable();
     private Button mVerifyOTP;
     private TextInputEditText mOTPEdtText;
 
-    OnVerifyOTPListener onVerifyOTPListener;
+    private OnVerifyOTPListener onVerifyOTPListener;
 
     public void setOnVerifyOTPListener(OnVerifyOTPListener onVerifyOTPListener) {
         this.onVerifyOTPListener = onVerifyOTPListener;
@@ -71,7 +73,7 @@ public class OTPFragment extends Fragment {
 
     private void OnVerify(View view) {
 
-        String otpTxt = mOTPEdtText.getText().toString();
+        String otpTxt = Objects.requireNonNull(mOTPEdtText.getText()).toString();
 
         if(validateOTP(otpTxt)) {
 
@@ -125,7 +127,7 @@ public class OTPFragment extends Fragment {
 
     private void handleError(Throwable throwable) {
 
-        Toast.makeText(getActivity(),"Please try again!!",Toast.LENGTH_LONG);
+        Toast.makeText(getActivity(),"Please try again!!",Toast.LENGTH_LONG).show();
 
     }
 
@@ -140,7 +142,7 @@ public class OTPFragment extends Fragment {
         if(object instanceof OTP) {
             OTP otp = (OTP) object;
             NotificationManager notificationManager = createNotificationChannel();
-            NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext(), CHANNEL_ID)
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(Objects.requireNonNull(getContext()), CHANNEL_ID)
                     .setSmallIcon(R.drawable.ic_launcher_foreground)
                     .setContentTitle("TicketBooker")
                     .setContentText(otp.getOtp() + " is your OTP for TicketBooker!!")
@@ -166,7 +168,7 @@ public class OTPFragment extends Fragment {
         // Create the NotificationChannel, but only on API 26+ because
         // the NotificationChannel class is new and not in the support library
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationManager notificationManager = getActivity().getSystemService(NotificationManager.class);
+            NotificationManager notificationManager = Objects.requireNonNull(getActivity()).getSystemService(NotificationManager.class);
             CharSequence name = getString(R.string.channel_name);
             String description = getString(R.string.channel_description);
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
@@ -175,12 +177,12 @@ public class OTPFragment extends Fragment {
             // Register the channel with the system; you can't change the importance
             // or other notification behaviors after this
 
-            notificationManager.createNotificationChannel(channel);
+            Objects.requireNonNull(notificationManager).createNotificationChannel(channel);
             return notificationManager;
 
 
         } else {
-           return (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
+           return (NotificationManager) Objects.requireNonNull(getActivity()).getSystemService(Context.NOTIFICATION_SERVICE);
         }
     }
 

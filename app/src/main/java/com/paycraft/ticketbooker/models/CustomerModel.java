@@ -2,7 +2,7 @@ package com.paycraft.ticketbooker.models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class CustomerModel {
+class CustomerModel {
 
     @SerializedName("name")
     String mName;

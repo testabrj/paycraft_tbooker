@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class VerifyOTP {
     @SerializedName("success")
+    private
     boolean isValid;
 
     public VerifyOTP(boolean isValid) {

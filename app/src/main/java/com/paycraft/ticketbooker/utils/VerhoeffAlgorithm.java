@@ -1,7 +1,7 @@
 package com.paycraft.ticketbooker.utils;
 
-public class VerhoeffAlgorithm{
-        private static int[][] d  = new int[][]
+class VerhoeffAlgorithm{
+        private static final int[][] d  = new int[][]
                 {
                         {0, 1, 2, 3, 4, 5, 6, 7, 8, 9},
                         {1, 2, 3, 4, 0, 6, 7, 8, 9, 5},
@@ -14,7 +14,7 @@ public class VerhoeffAlgorithm{
                         {8, 7, 6, 5, 9, 3, 2, 1, 0, 4},
                         {9, 8, 7, 6, 5, 4, 3, 2, 1, 0}
                 };
-        private static int[][] p = new int[][]
+        private static final int[][] p = new int[][]
                 {
                         {0, 1, 2, 3, 4, 5, 6, 7, 8, 9},
                         {1, 5, 7, 6, 2, 8, 3, 0, 9, 4},

@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class TicketApp extends Application {
     private static Retrofit mRetrofit;
-    static AssetInputStreamProvider inputStreamProvider;
+    private static AssetInputStreamProvider inputStreamProvider;
     private static final String BASE_URL = "http://paycrafttickets.com";
 
 

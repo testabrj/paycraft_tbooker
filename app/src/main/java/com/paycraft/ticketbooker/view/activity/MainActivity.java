@@ -21,10 +21,10 @@ import retrofit2.Retrofit;
 
 public class MainActivity extends AppCompatActivity implements RegistrationFragment.OnRegisterListener, OTPFragment.OnVerifyOTPListener, StationsFragment.OnTripBookedListener,ConfirmationFragment.OnConfirmBookingListener {
 
-    private Retrofit mRetrofit = TicketApp.getRetrofitInstance();
-    private CompositeDisposable compositeDisposable = new CompositeDisposable();
+    private final Retrofit mRetrofit = TicketApp.getRetrofitInstance();
+    private final CompositeDisposable compositeDisposable = new CompositeDisposable();
     private APIService apiService;
-    CustomViewPager pager;
+    private CustomViewPager pager;
 
 
     @Override

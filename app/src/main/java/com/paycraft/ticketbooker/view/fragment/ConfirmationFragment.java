@@ -24,6 +24,8 @@ import com.paycraft.ticketbooker.models.Stations;
 import com.paycraft.ticketbooker.services.APIService;
 import com.paycraft.ticketbooker.utils.Utility;
 
+import java.util.Objects;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
@@ -32,11 +34,11 @@ import retrofit2.Retrofit;
 
 public class ConfirmationFragment extends Fragment {
 
-   OnConfirmBookingListener onConfirmBookingListener;
+   private OnConfirmBookingListener onConfirmBookingListener;
     private StationsDAO stationDAO;
     private APIService apiService;
-    private Retrofit mRetrofit = TicketApp.getRetrofitInstance();
-    private CompositeDisposable compositeDisposable = new CompositeDisposable();
+    private final Retrofit mRetrofit = TicketApp.getRetrofitInstance();
+    private final CompositeDisposable compositeDisposable = new CompositeDisposable();
     private int tripId;
     private TextView mDocIdTxt,mTktIdTxt,mSourceTxt,mDestTxt,mPriceTxt;
     private Button mBtnConfirm;
@@ -107,7 +109,7 @@ public class ConfirmationFragment extends Fragment {
 
     private void bookTrip(View view) {
 
-        new AlertDialog.Builder(getActivity())
+        new AlertDialog.Builder(Objects.requireNonNull(getActivity()))
                 .setTitle("Confirmation")
                 .setMessage("Proceed with booking?")
                 .setIcon(R.mipmap.ic_launcher_foreground)
@@ -124,7 +126,7 @@ public class ConfirmationFragment extends Fragment {
     }
 
     private void callBooking() {
-        Disposable subscription = apiService.confirmBooking(Utility.getDocId(getActivity()),gTripId)
+        Disposable subscription = apiService.confirmBooking(Utility.getDocId(Objects.requireNonNull(getActivity())),gTripId)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .retry(3)
@@ -133,7 +135,7 @@ public class ConfirmationFragment extends Fragment {
     }
 
     private void handleError(Throwable throwable) {
-        Toast.makeText(getActivity(),"Please try again!!",Toast.LENGTH_LONG);
+        Toast.makeText(getActivity(),"Please try again!!",Toast.LENGTH_LONG).show();
     }
 
 

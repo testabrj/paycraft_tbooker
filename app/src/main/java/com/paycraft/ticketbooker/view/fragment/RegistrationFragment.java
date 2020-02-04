@@ -35,7 +35,7 @@ public class RegistrationFragment extends Fragment implements View.OnClickListen
     private Spinner mSpinnerDocType;
     private TextInputEditText mDOBEdtTxt,mNameEdtTxt,mDocIdEdtTxt;
     private Button mRegisterBtn;
-    OnRegisterListener onRegisterListener;
+    private OnRegisterListener onRegisterListener;
 
     public void setOnRegisterListener(OnRegisterListener onRegisterListener){
         this.onRegisterListener = onRegisterListener;
@@ -119,11 +119,11 @@ public class RegistrationFragment extends Fragment implements View.OnClickListen
         SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString(getString(R.string.docId), docId);
-        editor.commit();
+        editor.apply();
     }
 
     private class ValidationTextWatcher implements TextWatcher {
-        private View view;
+        private final View view;
         ValidationTextWatcher(View view) {
             this.view = view;
         }
@@ -195,7 +195,7 @@ public class RegistrationFragment extends Fragment implements View.OnClickListen
 
         }
 
-        return isMatching;
+        return true;
 
 
     }

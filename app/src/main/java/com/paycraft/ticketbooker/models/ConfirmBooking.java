@@ -2,8 +2,8 @@ package com.paycraft.ticketbooker.models;
 
 public class ConfirmBooking {
 
-    boolean success;
-    String ticketId;
+    private boolean success;
+    private String ticketId;
 
     public ConfirmBooking(boolean success, String ticketId) {
         this.success = success;

@@ -6,6 +6,7 @@ import com.google.gson.annotations.SerializedName;
 public class OTP {
 
     @SerializedName("otp")
+    private
     int otp;
 
     public OTP(int otp) {

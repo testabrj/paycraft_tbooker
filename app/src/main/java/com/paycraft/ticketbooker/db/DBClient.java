@@ -9,7 +9,7 @@ public class DBClient {
     private static DBClient mInstance;
 
     //our app database object
-    private AppDB appDatabase;
+    private final AppDB appDatabase;
 
     private DBClient(Context mCtx) {
 

@@ -54,8 +54,8 @@ public class StationsFragment extends Fragment implements AdapterView.OnItemSele
     private OnTripBookedListener mListener;
     private FrameLayout progressIndicator;
     private APIService apiService;
-    private Retrofit mRetrofit = TicketApp.getRetrofitInstance();
-    private CompositeDisposable compositeDisposable = new CompositeDisposable();
+    private final Retrofit mRetrofit = TicketApp.getRetrofitInstance();
+    private final CompositeDisposable compositeDisposable = new CompositeDisposable();
     private AppCompatSpinner mSpinnerSource,mSpinnerDest;
     private StationsDAO stationDAO ;
     private TextView mPriceTxt;
@@ -124,7 +124,7 @@ public class StationsFragment extends Fragment implements AdapterView.OnItemSele
 
     private void handleError(Throwable throwable) {
         progressIndicator.setVisibility(View.GONE);
-        Toast.makeText(getActivity(),"Please try again!!",Toast.LENGTH_LONG);
+        Toast.makeText(getActivity(),"Please try again!!",Toast.LENGTH_LONG).show();
 
     }
 
