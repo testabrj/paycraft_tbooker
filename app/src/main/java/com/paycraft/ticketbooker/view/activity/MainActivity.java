@@ -43,13 +43,6 @@ public class MainActivity extends AppCompatActivity implements RegistrationFragm
         // We keep last page for a "finishing" page
         indicator.setViewPager(pager, false);
 
-//        indicator.addOnStepClickListener(new StepperIndicator.OnStepClickListener() {
-//            @Override
-//            public void onStepClicked(int step) {
-//                pager.setCurrentItem(step, true);
-//            }
-//        });
-
     }
 
 
@@ -107,11 +100,6 @@ public class MainActivity extends AppCompatActivity implements RegistrationFragm
 
     }
 
-
-    @Override
-    public void OnConfirmBooking(String docId, String ticketId, int tripId) {
-
-    }
 
     @Override
     public void onBookAgain() {

@@ -66,7 +66,7 @@ public class ConfirmationFragment extends Fragment {
 
 
     public interface OnConfirmBookingListener {
-        void OnConfirmBooking(String docId,String ticketId,int tripId);
+
         void onBookAgain();
     }
 
