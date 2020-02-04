@@ -1,0 +1,71 @@
+[
+  {
+    "id": 1,
+    "source": "Bengaluru",
+    "destination": "Moscow",
+    "price": "1500"
+  },
+  {
+    "id":2 ,
+    "source": "Bengaluru" ,
+    "destination": "Seoul",
+    "price": "2500"
+  },
+  {
+    "id":3 ,
+    "source": "Kandy",
+    "destination":"Bengaluru" ,
+    "price":"200"
+  },
+
+  {
+    "id": 4,
+    "source": "Moscow",
+    "destination":"Bengaluru" ,
+    "price": "1600"
+  },
+  {
+    "id": 5,
+    "source": "Moscow",
+    "destination":"Kandy" ,
+    "price": "1200"
+  },{
+  "id": 6,
+  "source": "Moscow",
+  "destination":"Seoul" ,
+  "price": "1100"
+},
+  {
+    "id":7 ,
+    "source": "Seoul" ,
+    "destination": "Bengaluru",
+    "price": "2520"
+  },
+  {
+    "id":8 ,
+    "source": "Bengaluru" ,
+    "destination": "Kandy",
+    "price":"210"
+  },{
+  "id":9 ,
+  "source": "Kandy",
+  "destination":"Seoul" ,
+  "price":"200"
+},{
+  "id":10 ,
+  "source": "Kandy",
+  "destination":"Moscow" ,
+  "price":"200"
+},
+  {
+    "id":11 ,
+    "source": "Seoul" ,
+    "destination": "Moscow",
+    "price": "1220"
+  },{
+  "id":12 ,
+  "source": "Seoul" ,
+  "destination": "Kandy",
+  "price": "2520"
+}
+]

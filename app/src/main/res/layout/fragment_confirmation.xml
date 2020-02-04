@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_marginTop="60dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorAccent"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:id="@+id/cfm_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+   <TableLayout
+
+       android:layout_gravity="center"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content">
+
+       <TableRow
+           android:layout_marginTop="20dp"
+           android:layout_gravity="center">
+           <TextView
+               android:textSize="20sp"
+
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"/>
+
+
+           <TextView
+               android:textSize="20sp"
+
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"/>
+
+
+       </TableRow>
+
+       <TableRow
+           android:layout_marginTop="20dp"
+           android:layout_gravity="center">
+           <TextView
+               android:text="@string/docId"
+               android:textSize="20sp"
+               android:layout_marginEnd="10dp"
+
+               android:textColor="@color/colorPrimary"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"/>
+
+
+           <TextView
+               android:id="@+id/txt_doc_id"
+               android:textSize="20sp"
+
+
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"/>
+
+
+       </TableRow>
+
+
+
+       <TableRow
+           android:layout_marginTop="20dp"
+           android:id="@+id/tblr_tkt"
+           android:visibility="gone"
+           >
+
+
+           <TextView
+               android:text="@string/TicketId"
+               android:textSize="20sp"
+               android:textColor="@color/colorPrimary"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"/>
+
+           <TextView
+               android:id="@+id/txt_tkt_id"
+               android:textSize="20sp"
+
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"/>
+
+
+       </TableRow>
+
+       <TableRow
+           android:layout_marginTop="20dp">
+           <TextView
+               android:text="@string/source"
+               android:textSize="20sp"
+
+               android:textColor="@color/colorPrimary"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"/>
+           <TextView
+               android:id="@+id/txt_source"
+               android:textSize="20sp"
+
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"/>
+
+
+       </TableRow>
+
+       <TableRow
+           android:layout_marginTop="20dp">
+           <TextView
+
+               android:text="@string/destination"
+               android:textSize="20sp"
+
+               android:textColor="@color/colorPrimary"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"/>
+           <TextView
+               android:id="@+id/txt_destination"
+               android:textSize="20sp"
+
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"/>
+
+
+       </TableRow>
+
+       <TableRow
+           android:layout_marginTop="20dp">
+           <TextView
+
+               android:text="@string/price"
+               android:textSize="20sp"
+
+               android:textColor="@color/colorPrimary"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"/>
+           <TextView
+               android:id="@+id/txt_price"
+               android:textSize="20sp"
+
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"/>
+
+
+       </TableRow>
+
+   </TableLayout>
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/confirm"
+        android:id="@+id/btn_confirm_booking"
+        android:textSize="20sp"
+        android:padding="10dp"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/whiteSmoke"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:visibility="gone"
+        android:text="@string/startOver"
+        android:id="@+id/btn_book_again"
+        android:textSize="20sp"
+        android:padding="10dp"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/whiteSmoke"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+</LinearLayout>

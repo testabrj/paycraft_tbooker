@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.fragment.StationsFragment">
+
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent"
+        app:cardBackgroundColor="@color/whiteSmoke"
+        android:layout_marginLeft="@dimen/mtrl_card_spacing"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="@dimen/mtrl_card_spacing"
+        android:minHeight="500dp"
+        >
+
+        <FrameLayout
+            android:id="@+id/station_progress_holder"
+            android:animateLayoutChanges="true"
+            android:visibility="gone"
+            android:alpha="0.4"
+            android:background="@color/whiteSmoke"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ProgressBar
+
+                style="?android:attr/progressBarStyleSmallTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:layout_gravity="center" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_marginTop="80dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content">
+
+
+
+
+            <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:padding="10dp"
+            android:textAlignment="viewEnd"
+            android:textColor="@color/colorPrimary"
+            android:text="@string/source"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:layout_marginBottom="30dp"
+                android:id="@+id/spinner_source"
+                android:hint="@string/select_one"
+                android:spinnerMode="dialog"
+                style="@style/Widget.AppCompat.Spinner.Underlined"
+                android:backgroundTint="@color/colorAccent"
+                android:layout_width="150dp"
+                android:textAlignment="center"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:padding="10dp"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/colorPrimary"
+                android:text="@string/destination"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:layout_marginBottom="30dp"
+            android:id="@+id/spinner_destination"
+            android:hint="@string/select_one"
+            android:spinnerMode="dialog"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:backgroundTint="@color/colorAccent"
+            android:layout_width="150dp"
+            android:textAlignment="center"
+            android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textAlignment="viewEnd"
+                android:padding="10dp"
+                android:textColor="@color/colorPrimary"
+                android:text="@string/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        <TextView
+            android:textSize="20sp"
+            android:id="@+id/txt_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_book"
+            android:textSize="20sp"
+            android:text="@string/book"
+            android:textColor="@color/whiteSmoke"
+            android:background="@color/colorPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+</FrameLayout>

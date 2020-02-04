@@ -1,0 +1,23 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="editTextStyle">@style/EditTextTheme</item>
+        <item name="textInputStyle">@style/CustomTextInputStyle</item>
+    </style>
+
+    <style name="CustomTextInputStyle" parent="Widget.Design.TextInputLayout">
+        <item name="android:textColorHint">@color/colorPrimary</item>
+<!--        <item name="hintTextAppearance">@style/any_style_you_may_want"</item>-->
+    </style>
+
+    <style name="EditTextTheme" parent="Widget.AppCompat.EditText">
+
+        <item name="android:editTextBackground">@drawable/edt_txt_bg</item>
+    </style>
+
+</resources>

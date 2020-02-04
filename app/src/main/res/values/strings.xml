@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">PayCraft</string>
+    <string name="customer_name">Name</string>
+    <string name="dob">Date Of Birth</string>
+    <string name="select_one">Document Type</string>
+    <string name="doc_id">Document Id</string>
+    <string name="register">Register</string>
+    <string name="ticketBooker">TicketBooker</string>
+    <string name="verify">Verfiy OTP</string>
+    <string name="enter_otp">Enter OTP</string>
+    <string name="channel_name">tb_channel</string>
+    <string name="channel_description">otp channel</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="book">Book</string>
+    <string name="source">Source</string>
+    <string name="destination">Destination</string>
+    <string name="price">Price</string>
+    <string name="docId">DocumentId</string>
+    <string name="TicketId">Ticket ID</string>
+    <string name="confirm">Confirm</string>
+    <string name="confirmBooking">Confirm Booking</string>
+    <string name="bookingSummary">Booking Summary</string>
+    <string name="startOver">Start Again</string>
+</resources>
