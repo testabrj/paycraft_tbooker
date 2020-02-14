@@ -43,9 +43,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-
+        android:visibility="visible"
         app:layout_constraintTop_toBottomOf="@id/stepper_indicator"
          android:layout_marginTop="20dp" />
 
+<!--    <fragment-->
+<!--        android:tag="stationFragment"-->
+<!--        android:name="com.paycraft.ticketbooker.view.fragment.StationFragment"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"/>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
