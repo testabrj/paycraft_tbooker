@@ -1,6 +1,5 @@
 package com.paycraft.ticketbooker.view.fragment
 
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,26 +9,27 @@ import android.widget.TableRow
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.ViewModelProvider
 
 import com.paycraft.ticketbooker.R
 import com.paycraft.ticketbooker.TicketApp
+import com.paycraft.ticketbooker.databinding.FragmentConfirmationBinding
 import com.paycraft.ticketbooker.db.AppDB
 import com.paycraft.ticketbooker.db.dao.StationsDAO
 import com.paycraft.ticketbooker.models.ConfirmBooking
-import com.paycraft.ticketbooker.models.Stations
 import com.paycraft.ticketbooker.services.APIService
 import com.paycraft.ticketbooker.utils.Utility
+import com.paycraft.ticketbooker.viewmodels.ConfirmBookingVM
 
 import java.util.Objects
 
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
-import retrofit2.Retrofit
 
 class ConfirmationFragment : Fragment() {
 
@@ -38,17 +38,9 @@ class ConfirmationFragment : Fragment() {
     private var apiService: APIService? = null
     private val mRetrofit = TicketApp.retrofitInstance
     private val compositeDisposable = CompositeDisposable()
-    private val tripId: Int = 0
-    private var mDocIdTxt: TextView? = null
-    private var mTktIdTxt: TextView? = null
-    private var mSourceTxt: TextView? = null
-    private var mDestTxt: TextView? = null
-    private var mPriceTxt: TextView? = null
-    private var mBtnConfirm: Button? = null
+
     private var gTripId: Int = 0
-    private var mCfmTitle: TextView? = null
-    private var mTblrTkt: TableRow? = null
-    private var mBtnRepeat: Button? = null
+    private lateinit var binding: FragmentConfirmationBinding;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,25 +59,16 @@ class ConfirmationFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_confirmation, container, false)
-        mDocIdTxt = view.findViewById(R.id.txt_doc_id)
-        mTktIdTxt = view.findViewById(R.id.txt_tkt_id)
-        mSourceTxt = view.findViewById(R.id.txt_source)
-        mDestTxt = view.findViewById(R.id.txt_destination)
-        mPriceTxt = view.findViewById(R.id.txt_price)
-        mBtnConfirm = view.findViewById(R.id.btn_confirm_booking)
-        mCfmTitle = view.findViewById(R.id.cfm_title)
-        mTblrTkt = view.findViewById(R.id.tblr_tkt)
-        mCfmTitle!!.text = getString(R.string.confirmBooking)
-        mBtnConfirm!!.setOnClickListener { this.bookTrip(it) }
-        mBtnRepeat = view.findViewById(R.id.btn_book_again)
-        mBtnRepeat!!.setOnClickListener { this.bookAgain(it) }
-        return view
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_confirmation, container, false)
+        binding.confirmationModel = ViewModelProvider(this).get(ConfirmBookingVM::class.java)
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.btnConfirmBooking.setOnClickListener{bookTrip()}
+        binding.btnBookAgain.setOnClickListener{ bookAgain() }
+        return binding.root
     }
 
-    private fun bookAgain(view: View) {
+    private fun bookAgain() {
         onConfirmBookingListener!!.onBookAgain()
-
     }
 
 
@@ -95,13 +78,10 @@ class ConfirmationFragment : Fragment() {
             stationDAO = AppDB(context!!).stationsDAO()
         }
         val stations = stationDAO!!.getStationById(tripId)
-        mDocIdTxt!!.text = docId
-        mSourceTxt!!.text = stations.getmSource()
-        mDestTxt!!.text = stations.getmDestination()
-        mPriceTxt!!.text = stations.getmPrice()
+        binding.confirmationModel?.setUpTripInfo(stations,docId)
     }
 
-    private fun bookTrip(view: View) {
+    private fun bookTrip() {
 
         AlertDialog.Builder(Objects.requireNonNull<FragmentActivity>(activity))
                 .setTitle("Confirmation")
@@ -129,22 +109,15 @@ class ConfirmationFragment : Fragment() {
 
     private fun handleResponse(confirmBooking: ConfirmBooking) {
 
-
         if (confirmBooking.isSuccess) {
 
-            mTktIdTxt!!.text = confirmBooking.ticketId
-            mTblrTkt!!.visibility = View.VISIBLE
-            mCfmTitle!!.text = getString(R.string.bookingSummary)
-            mBtnConfirm!!.visibility = View.GONE
-            mBtnRepeat!!.visibility = View.VISIBLE
-            mBtnRepeat!!.isClickable = true
-
-
-//                        onConfirmBookingListener.OnConfirmBooking(Utility.getDocId(getActivity()),confirmBooking.getTicketId(),tripId);
+            binding.confirmationModel?.changeToSummary(confirmBooking.ticketId);
+            binding.tblrTkt.visibility = View.VISIBLE
+            binding.btnConfirmBooking.visibility = View.GONE
+            binding.btnBookAgain.visibility = View.VISIBLE
+            binding.btnBookAgain.isClickable = true
 
         }
-
-
     }
 
     companion object {
